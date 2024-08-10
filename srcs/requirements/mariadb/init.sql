@@ -1,4 +1,14 @@
-CREATE DATABASE wordpress;
-CREATE USER 'wpuser'@'%' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON *.* TO 'wpuser'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+#!/bin/bash
+
+    mysqld --bootstrap << EOF
+            FLUSH PRIVILEGES;
+
+            ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';
+            CREATE DATABASE IF NOT EXISTS wordpress;
+            CREATE USER 'wpuser'@'%' IDENTIFIED by 'password';
+            GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'%';
+        
+            FLUSH PRIVILEGES;
+EOF
+
+exec $@

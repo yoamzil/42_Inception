@@ -8,4 +8,8 @@ RUN mkdir -p /run/mysqld && chown mysql:mysql /run/mysqld
 COPY 50-server.cnf /etc/mysql/mariadb.conf.d/.
 COPY init.sql /etc/mysql/init.sql
 
-CMD ["mysqld"]
+RUN chmod +x /etc/mysql/init.sql
+
+ENTRYPOINT [ "/etc/mysql/init.sql" ]
+
+CMD ["mysqld", "--bind-address=0.0.0.0", "--datadir=/var/lib/mysql", "--user=root"]

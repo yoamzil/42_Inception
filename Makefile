@@ -12,4 +12,7 @@ down:
 clean: down
 	docker system prune -a --volumes
 
+fclean: clean
+	rm -rf srcs/web/*
+
 re: clean all

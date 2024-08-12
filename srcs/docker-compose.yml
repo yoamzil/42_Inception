@@ -6,13 +6,23 @@ services:
       - "443:443"
     volumes:
       - ./web:/var/www/html
+    networks:
+      - inception
+
   wordpress:
     build: requirements/wordpress/.
     container_name: wordpress
     volumes:
       - ./web:/var/www/html
+    networks:
+      - inception
+
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
+    networks:
+      - inception
 
-  
+networks:
+  inception:
+    driver: bridge

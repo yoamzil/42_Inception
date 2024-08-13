@@ -8,6 +8,9 @@ services:
       - ./web:/var/www/html
     networks:
       - inception
+    depends_on:
+      - wordpress
+    restart: always
 
   wordpress:
     build: requirements/wordpress/.
@@ -16,12 +19,16 @@ services:
       - ./web:/var/www/html
     networks:
       - inception
+    depends_on:
+      - mariadb
+    restart: always
 
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
     networks:
       - inception
+    restart: always
 
 networks:
   inception:

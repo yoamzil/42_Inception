@@ -2,12 +2,12 @@ volumes:
   wordpress:
     driver_opts:
       type: none
-      device: /Users/yoamzil/data/wordpress
+      device: /home/yoamzil/data/wordpress
       o: bind
   mariadb:
     driver_opts:
       type: none
-      device: /Users/yoamzil/data/mariadb
+      device: /home/yoamzil/data/mariadb
       o: bind
 
 services:

@@ -23,6 +23,8 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html
+    env_file:
+      - .env
 
   wordpress:
     build: requirements/wordpress/.
@@ -34,6 +36,8 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html
+    env_file:
+      - .env
 
   mariadb:
     build: requirements/mariadb/.
@@ -43,6 +47,8 @@ services:
     restart: always
     volumes:
       - mariadb:/var/lib/mysql
+    env_file:
+      - .env
 
 networks:
   inception:

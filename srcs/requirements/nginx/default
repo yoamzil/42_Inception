@@ -7,7 +7,7 @@ server {
 	root /var/www/html;
 	index index.php index.html index.htm index.nginx-debian.html;
 
-	server_name _;
+	server_name yoamzil.42.fr;
 
 	location / {
 		try_files $uri $uri/ =404;

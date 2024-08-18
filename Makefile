@@ -13,6 +13,9 @@ clean: down
 	docker system prune -a --volumes
 
 fclean: clean
-	rm -rf srcs/web/*
+	sudo rm -rf /home/yoamzil/data/wordpress/*
+	sudo rm -rf /home/yoamzil/data/mariadb/*
+	docker volume rm srcs_wordpress
+	docker volume rm srcs_mariadb
 
 re: clean all
